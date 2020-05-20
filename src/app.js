@@ -23,36 +23,58 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
+    let detailedPlayers = [];
 
-    // Instead of forloop use Map method
-    // Code here
+    
+    for (let i = 0; i < players.length; i++) {
+        detailedPlayers[i] = {
+            name: players[i],
+            image: "images/super-" + (i + 1) + ".png",
+            strength: getRandomStrength(),
+            type: (Math.floor(Math.random() * 99) % 2 == 0) ? "hero" : "villain"
+        };
+    }
+    // Type your code here
 
     return detailedPlayers;
 }
 
 // getting random strength
 const getRandomStrength = () => {
+
+    // return the random number.
     return Math.ceil(Math.random() * 100);
 }
 
-// Build player template
 const buildPlayers = (players, type) => {
-    let fragment = '';
+    let fragment = "";
 
-    // Instead of using for loop
-    // Use chaining of Array methods - filter, map and join
+    // Loop through players and accumulate HTML template
+    // depending of type of player(hero|villain)
     // Type your code here
+    for (let i = 0; i < players.length; i++) {
+        player = `
+    <div class="player">
+    <img src="${players[i].image}" alt="">
+    <div class="name">${players[i].name}</div>
+    <div class="strength">${players[i].strength}</div>
+    </div>
+    `;
+        if (players[i].type == type) {
+            fragment = fragment + player;
+        }
+    }
+
 
     return fragment;
 }
-
 // Display players in HTML
 const viewPlayers = (players) => {
+
     document.getElementById('heroes').innerHTML = buildPlayers(players, 'hero');
     document.getElementById('villains').innerHTML = buildPlayers(players, 'villain');
-}
 
+}
 
 window.onload = () => {
     viewPlayers(initPlayers(PLAYERS));

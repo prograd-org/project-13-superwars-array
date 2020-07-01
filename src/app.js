@@ -27,6 +27,19 @@ const initPlayers = (players) => {
 
     // Instead of forloop use Map method
     // Code here
+    detailedPlayers = players.map(function (name, index) {
+        var details = {
+            name: name,
+            strength: getRandomStrength(),
+            img: "images/super-" + (index + 1) + ".png"
+        }
+        if((index + 1) % 2 == 0) {
+            details.type = "hero";
+        } else {
+            details.type ="villain";
+        }
+        return details;
+    });
 
     return detailedPlayers;
 }

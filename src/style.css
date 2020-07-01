@@ -1,44 +1,35 @@
-.arena {
-    display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
-    grid-column-gap: 1em;
-}
-
-/* Team */
-.team {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.team#heroes {
-    justify-content: flex-end;
-}
-
-/* Player cards */
-.player {
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
-    margin: 10px;
-    padding: 1rem;
-    text-align: center;
-    width: 100px;
-}
-
-.player>img {
-    width: 100%;
-    height: auto;
-}
-
-.player>.strength {
-    font-size: 3em;
-}
-
-#score {
-    font-size: 3em;
-    text-align: center;
-}
-
-.footer{
-    margin-left: 80px;
-    font-size: 18px;
-}
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container{
+      margin-left: 250px;
+    }
+    .list{
+      display: grid;
+      grid-template-columns: 13% 13% 13% 25% 13% 13% 13%;
+      grid-gap: 12px;
+      
+    }
+    .item{
+      border: 1px solid black;
+      border-radius: 15px;
+      background: #f7f7f7;
+      padding: 20px;
+    }
+    p,h1{
+      text-align: center;
+      font-family: 'Lucida Sans';
+    }
+    .score{
+      text-align: center;
+      font-family: 'Lucida Sans';
+      font-weight: 600;
+      font-size: 50px;
+    }
+    .footer{
+      margin-top: 10px;
+      margin-left : 250px;
+      font-size : 18px;
+    }

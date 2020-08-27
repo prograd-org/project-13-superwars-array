@@ -46,19 +46,21 @@ const getRandomStrength = () => {
 
 // Build player template
 const buildPlayers = (players, type) => {
-  let fragment = "";
-
-  // Loop through players and accumulate HTML template
-  // depending of type of player(hero|villain)
+  // Instead of using for loop
+  // Use chaining of Array methods - filter, map and join
   // Type your code here
-  players.forEach((player, index) => {
-    console.log(type);
+  let fragment = players
+    .filter((player) => player.type == type)
+    .map(
+      (player) =>
+        `<div class="player">
+        <img src="${player.image}" alt="">
+        <div class="name">${player.name}</div>
+        <div class="strength">${player.strength}</div>
+    </div>`
+    )
+    .join();
 
-    if (player.type == type) {
-      fragment += `<div class="player"><img src="${player.image}"alt=""><div class="name">${player.name}</div><div class="strength">${player.strength}</div></div>`;
-    }
-  });
-  console.log(players);
   return fragment;
 };
 

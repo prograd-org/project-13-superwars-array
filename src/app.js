@@ -23,10 +23,22 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
+
 
     // Instead of forloop use Map method
     // Code here
+    var i = 0;
+    detailedPlayers = players.map((item) => {
+        i++;
+        let player = {
+            name: item,
+            strength: getRandomStrength(),
+            image: "images/super-" + i + ".png",
+            type: (i % 2 == 0) ? 'hero' : 'villain'
+        }
+
+        return player;
+    });
 
     return detailedPlayers;
 }
@@ -38,14 +50,29 @@ const getRandomStrength = () => {
 
 // Build player template
 const buildPlayers = (players, type) => {
-    let fragment = '';
 
+    let fragment = ''
+    // Loop through players and accumulate HTML template
+    // depending of type of player(hero|villain)
     // Instead of using for loop
     // Use chaining of Array methods - filter, map and join
     // Type your code here
+    fragment = fragment + players.filter((player) => {
+        return (player.type == type) ? true : false;
+    }).map((player => {
+        console.log(player);
+        return `
+        <div class="player">
+            <img src="${player.image}" alt="">
+            <div class="name">${player.name}</div>
+            <div class="strength">${player.strength}</div>
+        </div> `;
+    })
+    ).join("\n");
 
     return fragment;
 }
+
 
 // Display players in HTML
 const viewPlayers = (players) => {

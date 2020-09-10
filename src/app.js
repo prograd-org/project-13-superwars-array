@@ -23,7 +23,7 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
+    let detailedPlayer = '';
     detailedPlayers = players.map((player, i) => {
         return {
             name: player,
@@ -34,7 +34,7 @@ const initPlayers = (players) => {
     });
     // Instead of forloop use Map method
     // Code here
-    return detailedPlayers;
+    return detailedPlayer;
 }
 
 

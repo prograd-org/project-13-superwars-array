@@ -23,12 +23,28 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
+    let detailedPlayers = [];
 
     // Instead of forloop use Map method
     // Code here
+    detailedPlayers=players.map((item,index)=>{
+        let object={}
+        object.name=item;
+        object.strength=getRandomStrength();
+        object.image="images/super-"+(index+1)+".png"
+        object.type=randomType();
+        return object
+    })
 
     return detailedPlayers;
+} 
+
+
+
+//generate random type
+const randomType=()=>{
+    let random=Math.round(Math.random())
+    return random===0?"hero":"villain"
 }
 
 // getting random strength
@@ -43,7 +59,13 @@ const buildPlayers = (players, type) => {
     // Instead of using for loop
     // Use chaining of Array methods - filter, map and join
     // Type your code here
-
+    let arr=players.map(item=>{
+        fragment+=`<div class="player">
+        <img src="${item.image}" alt="">
+        <div class="name">${item.name}</div>
+        <div class="strength">${item.strength}</div>
+        </div>`
+    })
     return fragment;
 }
 

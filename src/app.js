@@ -29,12 +29,12 @@ const initPlayers = (players) => {
     // Code here
     players.map((player, index) => {
         let characters = {
-        name = player,
-        strength = 100,
-        image = `images/super-${i + 1}.png`,
-        type = "hero"|"villain"
+        name : player,
+        strength : 100,
+        image : `images/super-'+ (index+1)+'.png`,
+        type : "hero"|"villain"
         }
-        detailedPlayers.push(character);
+        detailedPlayers.push(characters);
         });
 
     return detailedPlayers;
@@ -42,6 +42,7 @@ const initPlayers = (players) => {
 
 // getting random strength
 const getRandomStrength = () => {
+    
     return Math.floor(Math.ceil(Math.random() * 100));
 }
 

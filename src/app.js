@@ -23,19 +23,16 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
-
-    // Instead of forloop use Map method
-    // Code here
-    players.map((p,i) => {
-        let agent={};
-        agent.name=p;
-        agent.strength = getRandomStrength();
-        agent.image = `images/super-${i + 1}.png`;
-        agent.type = i % 2 == 0 ? "hero" : "villain";
-        detailedPlayers.push(agent);
+    let detailedPlayers = [];
+    players.map((player, i) =>{
+        let character = {};
+        character.name=player;
+        character.strength=getRandomStrength();
+        character.image=`images/super-${i+1}.png`;
+        character.type=getRandomStrength() % 2 == 0 ? "hero" : "villain";
+        detailedPlayers.push(character);
     });
-
+    
     return detailedPlayers;
 }
 
@@ -47,15 +44,15 @@ const getRandomStrength = () => {
 // Build player template
 const buildPlayers = (players, type) => {
     let fragment = '';
-
-    // Instead of using for loop
-    // Use chaining of Array methods - filter, map and join
-    // Type your code here
-    fragment=players.filter((p) => p.type == type).map((p,i) => {return `<div class="player">
-    <img src="${players[i].image}" alt="">
-    <div class="name">${players[i].name}</div>
-    <div class="strength">${players[i].strength}</div>
-         </div>`}).join("");
+    fragment=players.filter((player) => player.type.toLowerCase() == type.toLowerCase())
+		.map((player, i) => {
+			return `<div class="player">
+                <img src="${player.image}" alt="">
+                <div class="name">${player.name}</div>
+                <div class="strength">${player.strength}</div>
+            </div>`;
+		})
+		.join("");
     return fragment;
 }
 
@@ -64,7 +61,6 @@ const viewPlayers = (players) => {
     document.getElementById('heroes').innerHTML = buildPlayers(players, 'hero');
     document.getElementById('villains').innerHTML = buildPlayers(players, 'villain');
 }
-
 
 window.onload = () => {
     viewPlayers(initPlayers(PLAYERS));

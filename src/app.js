@@ -69,3 +69,4 @@ const viewPlayers = (players) => {
 window.onload = () => {
     viewPlayers(initPlayers(PLAYERS));
 }
+ 

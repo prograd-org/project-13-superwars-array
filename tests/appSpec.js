@@ -1,4 +1,3 @@
-// Helps to mimic div creations
 let HTMLElements = {};
 document.getElementById = jasmine.createSpy('HTML Element').and.callFake(function (ID) {
   if (!HTMLElements[ID]) {
@@ -43,7 +42,7 @@ describe("Creating players", function () {
 
     expect(found).toBeGreaterThan(-1);
     expect(players[0].image).toBeInstanceOf(String);
-    expect(players[0].image).toMatch(/images\/super-[0-9]+\.png/);
+    expect(players[0].image).toMatch(../images\/super-[0-9]+\.png/);
   });
 
   it("should create player with a valid numerical strength \
